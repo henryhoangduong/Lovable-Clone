@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { readonly, z } from "zod";
 import { baseProcedure, createTRPCRouter } from "../init";
 import { inngest } from "@/inngest/client";
 export const appRouter = createTRPCRouter({
@@ -15,6 +15,7 @@ export const appRouter = createTRPCRouter({
           email: input.text, 
         },
       });
+      return {ok:"sucess"}
     }),
   createAI: baseProcedure
     .input(
@@ -30,3 +31,7 @@ export const appRouter = createTRPCRouter({
 });
 // export type definition of API
 export type AppRouter = typeof appRouter;
+
+const todo: Readonly<Todo> = {
+  title: "Delete inactive users",
+}; 
